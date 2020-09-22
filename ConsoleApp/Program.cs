@@ -13,6 +13,7 @@ namespace ConsoleApp
         static void Main(string[] args)
         {
             DeviceService.SendMessageAsync(deviceClient).GetAwaiter();
+            DeviceService.ReceiveMessageAsync(deviceClient).GetAwaiter();
 
             Console.ReadKey();
         }
