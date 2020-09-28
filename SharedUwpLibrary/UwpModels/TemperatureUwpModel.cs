@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SharedUwpLibrary.ModelsUwp
+namespace SharedUwpLibrary.UwpModels
 {
-    public class TemperatureModelUwp
+    public class TemperatureUwpModel
     {
-
         public double Temperature { get; set; }
         public double Humidity { get; set; }
     }

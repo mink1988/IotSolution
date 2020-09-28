@@ -1,15 +1,17 @@
-﻿using Microsoft.Azure.Devices.Client;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Azure.Devices.Client;
 using Newtonsoft.Json;
-using MAD = Microsoft.Azure.Devices;
+using SharedUwpLibrary.UwpModels;
+using Uwp = Microsoft.Azure.Devices;
 
-namespace SharedUwpLibrary.ServicesUwp
+
+namespace SharedUwpLibrary.UwpServices
 {
-    public class DeviceServicesUwp
+    public static class DeviceUwpService
     {
         private static readonly Random rnd = new Random();
 
@@ -17,7 +19,7 @@ namespace SharedUwpLibrary.ServicesUwp
         {
             while (true)
             {
-                var data = new TemperatureModel()
+                var data = new TemperatureUwpModel
                 {
                     Temperature = rnd.Next(20, 30),
                     Humidity = rnd.Next(40, 50)
@@ -30,7 +32,7 @@ namespace SharedUwpLibrary.ServicesUwp
 
 
                 Console.WriteLine($"Message sent: {json}");
-                await Task.Delay(60 * 1000);
+                await Task.Delay(10 * 1000);
 
             }
 
@@ -52,17 +54,11 @@ namespace SharedUwpLibrary.ServicesUwp
             }
         }
 
-        public static async Task SendMessageToDeviceAsync(MAD.ServiceClient serviceClient, string targetDeviceId, string message)
+        public static async Task SendMessageToDeviceAsync(Uwp.ServiceClient serviceClient, string targetDeviceId, string message)
         {
-            var payload = new MAD.Message(Encoding.UTF8.GetBytes(message));
+            var payload = new Uwp.Message(Encoding.UTF8.GetBytes(message));
             await serviceClient.SendAsync(targetDeviceId, payload);
         }
-
-
-
-
-
-
 
     }
 }

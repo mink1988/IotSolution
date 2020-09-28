@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SharedUwpLibrary.Models.Uwp
+namespace SharedUwpLibrary.UwpModels
 {
-    public class BodyMessageModelUwp
-    {
-
+     public class BodyMessageUwpModel
+    { 
         public string TargetDeviceId { get; set; }
         public string Message { get; set; }
-
     }
+
+
 }
